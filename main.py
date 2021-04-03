@@ -20,49 +20,72 @@
 
 import pandas as pd
 
-df7 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2007.csv")
-print(df7.head(11))
-print(df7.tail(5))
-print(df7.shape)
-print(df7.columns)
-print(df7.dtypes)
-print(df7.loc[1:1000, "Year":"Engine type"])
+df07 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2007.csv")
+print(df07.head(11))
+print(df07.tail(5))
+print(df07.shape)
+print(df07.columns)
+print(df07.dtypes)
+print(df07.loc[1:1000, "Year":"Engine type"])
 #print(df7)
 
-df8 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2008.csv")
+df08 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2008.csv")
 #print(df8)
-df1 = pd.DataFrame({df7: df8})
-print(df1)
-df9 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2009.csv")
+
+
+df09 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2009.csv")
 #print(df9)
 
-df10 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2010.csv")
+df010 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2010.csv")
 #print(df10)
 
-df11 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2011.csv")
+df011 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2011.csv")
 #print(df11)
 
-df12 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2012.csv")
+df012 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2012.csv")
 #print(df12)
 
-df13 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2013.csv")
+df013 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2013.csv")
 #print(df13)
 
-df14 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2014.csv")
+df014 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2014.csv")
 #print(df14)
 
-df15 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2015.csv")
+df015 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2015.csv")
 #print(df15)
 
-df16 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2016.csv")
+df016 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2016.csv")
 #print(df16)
 
-df17 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2017.csv")
+df017 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2017.csv")
 #print(df17)
 
-df18 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2018.csv")
+df018 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2018.csv")
 #print(df18)
 
-df19 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2019.csv")
+df019 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2019.csv")
 #print(df19)
 
+df1 = pd.DataFrame(df07, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df2 = pd.DataFrame(df08, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df3 = pd.DataFrame(df09, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df4 = pd.DataFrame(df010, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df5 = pd.DataFrame(df011, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df6 = pd.DataFrame(df012, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df7 = pd.DataFrame(df013, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df8 = pd.DataFrame(df014, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df9 = pd.DataFrame(df015, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df10 = pd.DataFrame(df016, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df11 = pd.DataFrame(df017, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df12 = pd.DataFrame(df018, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+df13 = pd.DataFrame(df019, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
+
+df_row = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
+
+# I have concatenated my 19 data sets into one but now the row labels are wrong so I need to adjust them.
+
+df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13], ignore_index=True)
+
+print(df_row_reindex)
+#print(df_row.tail(10))
+#print(df_row.shape)
