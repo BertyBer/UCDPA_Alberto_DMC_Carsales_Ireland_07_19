@@ -80,11 +80,13 @@ df11 = pd.DataFrame(df017, columns = ["Year", "Month", "County", "Registration t
 df12 = pd.DataFrame(df018, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
 df13 = pd.DataFrame(df019, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
 
-df_row = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
+#df_row = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
+df_row = pd.concat([df1, df13])
 
 # I have concatenated my 19 data sets into one but now the row labels are wrong so I need to adjust them.
 
-df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13], ignore_index=True)
+#df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13], ignore_index=True)
+df_row_reindex = pd.concat([df1, df13], ignore_index=True)
 
 #print(df_row_reindex)
 #print(df_row.tail(10))
@@ -94,7 +96,7 @@ df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, d
 #print(df_row_reindex.iloc[6])
 pd.set_option("display.max_rows", None, "display.max_columns", None)
 
-print(df_row_reindex.head(60))
+print(df_row_reindex.head(500))
 df_row_reindex.fillna(value=0)
 
 import pandas as pd
@@ -102,15 +104,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-x = df_row_reindex["Year"].head(60)
-y1 = df_row_reindex['County'].head(60)
-y2 = df_row_reindex['Engine type'].head(60)
+x = df_row_reindex["Month"].head(500)
+#y1 = df_row_reindex["Year"].head(500)
+#y2 = df_row_reindex["Engine type"].head(500)
+y3 = df_row_reindex["Car registration count"].head(500)
+#y4 = df_row_reindex["Year"].head(500)
 
-plt.plot(x,y1, marker="o", linestyle="-", color="r", label="views")
-plt.plot(x,y2,marker="*", linestyle="-.", color="b", label='likes')
-plt.title("Engine Type by County and Year")
-plt.xlabel("Year")
-plt.ylabel("County and Engine Type")
+#plt.plot(x,y1, marker="o", linestyle="--", color="g", label="per county")
+#plt.plot(x,y2, marker="*", linestyle="-.", color="b", label="Engine type")
+plt.plot(x,y3, marker="+", linestyle=":", color="r", label="Engine type")
+#plt.plot(x,y4, marker=".", linestyle="solid", color="y", label="Engine type")
+
+plt.title("Engine Type by County")
+plt.xlabel("County")
+plt.ylabel("Engine and Car count")
 plt.legend()
 plt.tight_layout()
 plt.show()
