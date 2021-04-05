@@ -97,3 +97,23 @@ pd.set_option("display.max_rows", None, "display.max_columns", None)
 print(df_row_reindex.head(60))
 df_row_reindex.fillna(value=0)
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+x = df_row_reindex["Year"].head(60)
+y1 = df_row_reindex['County'].head(60)
+y2 = df_row_reindex['Engine type'].head(60)
+
+plt.plot(x,y1, marker="o", linestyle="-", color="r", label="views")
+plt.plot(x,y2,marker="*", linestyle="-.", color="b", label='likes')
+plt.title("Engine Type by County and Year")
+plt.xlabel("Year")
+plt.ylabel("County and Engine Type")
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+
+
