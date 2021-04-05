@@ -21,12 +21,12 @@
 import pandas as pd
 
 df07 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2007.csv")
-print(df07.head(11))
-print(df07.tail(5))
-print(df07.shape)
-print(df07.columns)
-print(df07.dtypes)
-print(df07.loc[1:1000, "Year":"Engine type"])
+#print(df07.head(11))
+#print(df07.tail(5))
+#print(df07.shape)
+#print(df07.columns)
+#print(df07.dtypes)
+#print(df07.loc[1:1000, "Year":"Engine type"])
 #print(df7)
 
 df08 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2008.csv")
@@ -86,6 +86,14 @@ df_row = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df1
 
 df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13], ignore_index=True)
 
-print(df_row_reindex)
+#print(df_row_reindex)
 #print(df_row.tail(10))
 #print(df_row.shape)
+#print(df_row_reindex.tail(60))
+#print (df_row_reindex[1:4])
+#print(df_row_reindex.iloc[6])
+pd.set_option("display.max_rows", None, "display.max_columns", None)
+
+print(df_row_reindex.head(60))
+df_row_reindex.fillna(value=0)
+
