@@ -80,47 +80,81 @@ df11 = pd.DataFrame(df017, columns = ["Year", "Month", "County", "Registration t
 df12 = pd.DataFrame(df018, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
 df13 = pd.DataFrame(df019, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
 
-#df_row = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
-df_row = pd.concat([df1, df13])
+df_row = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
+#df_row = pd.concat([df1, df13])
 
-# I have concatenated my 19 data sets into one but now the row labels are wrong so I need to adjust them.
+# I have concatenated my 13 data sets into one but now the row labels are wrong so I need to adjust them.
 
 #df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13], ignore_index=True)
-df_row_reindex = pd.concat([df1, df13], ignore_index=True)
+#df_row_reindex = pd.concat([df1, df13], ignore_index=True)
 
-#print(df_row_reindex)
+cars = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
+
+#print(cars)
 #print(df_row.tail(10))
 #print(df_row.shape)
-#print(df_row_reindex.tail(60))
-#print (df_row_reindex[1:4])
-#print(df_row_reindex.iloc[6])
+#print(cars.tail(60))
+#print (cars[1:4])
+#print(cars.iloc[6])
 pd.set_option("display.max_rows", None, "display.max_columns", None)
 
-print(df_row_reindex.head(500))
-df_row_reindex.fillna(value=0)
+#print(cars.head())
 
+#print(cars.shape)
+#print(cars.isnull().sum())
+#print(cars.info())
+
+#print(cars.fillna(value=0))
+
+
+print(cars.columns)
+
+#print(cars.shape)
+
+print(cars.info())
+
+#print(cars["Year"].head(50))
+
+#print(cars.head(2))
+#print(cars.isnull())
+
+
+
+print(cars.shape)
+
+
+#print(cars.isnull().sum())
+cars_row = cars.dropna(axis = 0)
+print(cars_row.shape)
+# I am not dropping any columns with the next code because i will be left with no columns, so I am going to replace the values with zero instead.
+#cars_col = cars.dropna(axis=1)
+#print(cars_col.shape)
+
+zero_fill_data = cars.fillna(0)
+print(zero_fill_data.isnull().sum())
+
+#print(cars_col.shape)
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-x = df_row_reindex["Month"].head(500)
+#x = df_row_reindex["Month"].head(500)
 #y1 = df_row_reindex["Year"].head(500)
 #y2 = df_row_reindex["Engine type"].head(500)
-y3 = df_row_reindex["Car registration count"].head(500)
+#y3 = df_row_reindex["Car registration count"].head(500)
 #y4 = df_row_reindex["Year"].head(500)
 
 #plt.plot(x,y1, marker="o", linestyle="--", color="g", label="per county")
 #plt.plot(x,y2, marker="*", linestyle="-.", color="b", label="Engine type")
-plt.plot(x,y3, marker="+", linestyle=":", color="r", label="Engine type")
+#plt.plot(x,y3, marker="+", linestyle=":", color="r", label="Engine type")
 #plt.plot(x,y4, marker=".", linestyle="solid", color="y", label="Engine type")
 
-plt.title("Engine Type by County")
-plt.xlabel("County")
-plt.ylabel("Engine and Car count")
-plt.legend()
-plt.tight_layout()
-plt.show()
-
+#plt.title("Engine Type by County")
+#plt.xlabel("County")
+#plt.ylabel("Engine and Car count")
+#plt.legend()
+#plt.tight_layout()
+#plt.show()
 
 
