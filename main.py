@@ -139,11 +139,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-#x = df_row_reindex["Month"].head(500)
-#y1 = df_row_reindex["Year"].head(500)
-#y2 = df_row_reindex["Engine type"].head(500)
-#y3 = df_row_reindex["Car registration count"].head(500)
-#y4 = df_row_reindex["Year"].head(500)
+#x = cars["Month"].head(500)
+#y1 = cars["Year"].head(500)
+#y2 = cars["Engine type"].head(500)
+#y3 = cars["Car registration count"].head(500)
+#y4 = cars["Year"].head(500)
 
 #plt.plot(x,y1, marker="o", linestyle="--", color="g", label="per county")
 #plt.plot(x,y2, marker="*", linestyle="-.", color="b", label="Engine type")
