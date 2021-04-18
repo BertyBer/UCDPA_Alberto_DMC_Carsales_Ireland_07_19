@@ -1,9 +1,5 @@
-# spam = 40
-# spam
-# print (spam)
 
-# print ("alice"+ "bob")
-# print(len("Alice"))
+#Initial coding
 
 #print("hello what is your name")
 #myName = input()
@@ -16,18 +12,24 @@
 #print("I know, mind blowing!! " + myName)
 #print("OK, enough talking, let's do this")
 
-#export data frames
+#importing packages
+#importing database passenger cars databases 2007-2019
 
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 df07 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2007.csv")
 #print(df07.head(11))
 #print(df07.tail(5))
-#print(df07.shape)
+print(df07.shape)
 #print(df07.columns)
 #print(df07.dtypes)
 #print(df07.loc[1:1000, "Year":"Engine type"])
 #print(df7)
+
+#checking columns and items and importing the rest of the datasets
 
 df08 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2008.csv")
 #print(df8)
@@ -80,60 +82,49 @@ df11 = pd.DataFrame(df017, columns = ["Year", "Month", "County", "Registration t
 df12 = pd.DataFrame(df018, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
 df13 = pd.DataFrame(df019, columns = ["Year", "Month", "County", "Registration type", "Engine type", "Car registration count"])
 
-df_row = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
-#df_row = pd.concat([df1, df13])
-
-# I have concatenated my 13 data sets into one but now the row labels are wrong so I need to adjust them.
+# I have concatenated my 13 data sets into one and call it cars.
 
 #df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13], ignore_index=True)
 #df_row_reindex = pd.concat([df1, df13], ignore_index=True)
 
 cars = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
 
-#print(cars)
-#print(df_row.tail(10))
-#print(df_row.shape)
-#print(cars.tail(60))
-#print (cars[1:4])
-#print(cars.iloc[6])
-pd.set_option("display.max_rows", None, "display.max_columns", None)
-
 #print(cars.head())
+print(cars.tail())
+print(cars.shape)
+print(cars[1:4])
+print(cars.iloc[6])
+pd.set_option("display.max_rows", None, "display.max_columns", None)
+print(cars.head(20))
 
-#print(cars.shape)
+#Getting the NaN values and checking how many I have
 #print(cars.isnull().sum())
 #print(cars.info())
 
-#print(cars.fillna(value=0))
 
-
-print(cars.columns)
-
-#print(cars.shape)
-
-print(cars.info())
-
-#print(cars["Year"].head(50))
-
-#print(cars.head(2))
-#print(cars.isnull())
-
-
-
-print(cars.shape)
-
-
+#I am going to drop the rows with a NaN value because I have a lot of Data
 #print(cars.isnull().sum())
+#to drop the rows with zero values.
 cars_row = cars.dropna(axis = 0)
 print(cars_row.shape)
-# I am not dropping any columns with the next code because i will be left with no columns, so I am going to replace the values with zero instead.
+
+#If I want to drop the columns, I would use:
 #cars_col = cars.dropna(axis=1)
-#print(cars_col.shape)
 
-zero_fill_data = cars.fillna(0)
-print(zero_fill_data.isnull().sum())
+#I am now replacing the remaining NaN values with zero instead of dropping the columns:
+print(cars.isnull().sum())
+cars.fillna(value='not-declared', inplace=True)
+print(cars.isnull().sum())
 
-#print(cars_col.shape)
+print(cars.columns)
+print(cars.shape)
+print(cars.info())
+
+print(cars["Year"].head(50))
+print(cars["Year"].tail(50))
+
+
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
