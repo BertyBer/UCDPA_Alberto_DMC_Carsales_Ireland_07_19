@@ -23,7 +23,7 @@ import seaborn as sns
 df07 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2007.csv")
 #print(df07.head(11))
 #print(df07.tail(5))
-print(df07.shape)
+#print(df07.shape)
 #print(df07.columns)
 #print(df07.dtypes)
 #print(df07.loc[1:1000, "Year":"Engine type"])
@@ -90,12 +90,12 @@ df13 = pd.DataFrame(df019, columns = ["Year", "Month", "County", "Registration t
 cars = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
 
 #print(cars.head())
-print(cars.tail())
-print(cars.shape)
-print(cars[1:4])
-print(cars.iloc[6])
+#print(cars.tail())
+#print(cars.shape)
+#print(cars[1:4])
+#print(cars.iloc[6])
 pd.set_option("display.max_rows", None, "display.max_columns", None)
-print(cars.head(20))
+#print(cars.head(20))
 
 #Getting the NaN values and checking how many I have
 #print(cars.isnull().sum())
@@ -111,41 +111,29 @@ print(cars_row.shape)
 #If I want to drop the columns, I would use:
 #cars_col = cars.dropna(axis=1)
 
-#I am now replacing the remaining NaN values with zero instead of dropping the columns:
-print(cars.isnull().sum())
-cars.fillna(value='not-declared', inplace=True)
-print(cars.isnull().sum())
+#I am now replacing the remaining NaN values with non declared instead of dropping the columns:
+#print(cars.isnull().sum())
+cars.fillna(value= "", inplace=True)
+#print(cars.isnull().sum())
 
 print(cars.columns)
-print(cars.shape)
-print(cars.info())
+#print(cars.shape)
+#print(cars.info())
 
-print(cars["Year"].head(50))
-print(cars["Year"].tail(50))
+cars.columns = ["Year", "Month", "County", "Registration_Type", "Engine_Type", "Car_Reg_Count"]
 
+#iterrows
 
+print(next(cars.iterrows())[1])
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
+for index, row in cars.head(n=10).iterrows():
+     print(index, row)
 
-#x = cars["Month"].head(500)
-#y1 = cars["Year"].head(500)
-#y2 = cars["Engine type"].head(500)
-#y3 = cars["Car registration count"].head(500)
-#y4 = cars["Year"].head(500)
+# iterate over rows with iterrows()
+for index, row in cars.head(20).iterrows():
+     # access data using column names
+     print(index, row['Year'], row['County'], row['Registration_Type'])
 
-#plt.plot(x,y1, marker="o", linestyle="--", color="g", label="per county")
-#plt.plot(x,y2, marker="*", linestyle="-.", color="b", label="Engine type")
-#plt.plot(x,y3, marker="+", linestyle=":", color="r", label="Engine type")
-#plt.plot(x,y4, marker=".", linestyle="solid", color="y", label="Engine type")
+for row in cars.head(20).itertuples():
 
-#plt.title("Engine Type by County")
-#plt.xlabel("County")
-#plt.ylabel("Engine and Car count")
-#plt.legend()
-#plt.tight_layout()
-#plt.show()
-
-
+    print(row.Year, row.County, row.Registration_Type)
