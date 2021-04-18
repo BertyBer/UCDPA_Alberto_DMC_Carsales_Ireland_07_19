@@ -16,9 +16,12 @@
 #importing database passenger cars databases 2007-2019
 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+plt.close("all")
 import seaborn as sns
+import numpy as np
+
+
 
 df07 = pd.read_csv(r"C:\Users\Alberto\Desktop\Data Analytics\passenger cars 2007.csv")
 #print(df07.head(11))
@@ -87,11 +90,11 @@ df13 = pd.DataFrame(df019, columns = ["Year", "Month", "County", "Registration t
 #df_row_reindex = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13], ignore_index=True)
 #df_row_reindex = pd.concat([df1, df13], ignore_index=True)
 
-cars = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
-
+#cars = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13])
+cars = df13
 #print(cars.head())
 #print(cars.tail())
-#print(cars.shape)
+print(cars.shape)
 #print(cars[1:4])
 #print(cars.iloc[6])
 pd.set_option("display.max_rows", None, "display.max_columns", None)
@@ -124,16 +127,59 @@ cars.columns = ["Year", "Month", "County", "Registration_Type", "Engine_Type", "
 
 #iterrows
 
-print(next(cars.iterrows())[1])
+#print(next(cars.iterrows())[1])
 
-for index, row in cars.head(n=10).iterrows():
-     print(index, row)
+#for index, row in cars.head(n=10).iterrows():
+     #print(index, row)
 
 # iterate over rows with iterrows()
-for index, row in cars.head(20).iterrows():
-     # access data using column names
-     print(index, row['Year'], row['County'], row['Registration_Type'])
 
-for row in cars.head(20).itertuples():
+#for index, row in cars.head(20).iterrows():
+     ################################################# access data using column names
+     #print(index, row['Year'], row['County'], row['Registration_Type'])
 
-    print(row.Year, row.County, row.Registration_Type)
+#for row in cars.head(20).itertuples():
+    #print(row.Year, row.County, row.Registration_Type)
+
+#cars.sort_values("County")
+#print(cars.head(10))
+
+cars.sort_values("Engine_Type")
+print(cars.head(10))
+
+
+#Visualization
+#I am using only the last year for this
+
+print(pd.set_option("display.max_rows", None, "display.max_columns", None))
+x = cars["Month"].head(10)
+y1 = cars["Car_Reg_Count"].head(10)
+#y2 = cars["Year"].head(10)
+
+plt.plot(x,y1, marker="o", linestyle="-", color="r", label="Reg_Count")
+#plt.plot(x,y2,marker="*", linestyle="-.", color="b", label='PriceEuro')
+plt.title("test1")
+plt.xlabel("test2")
+plt.ylabel("test3")
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+#------------------------------------------#----------------
+
+cars = pd.DataFrame(np.random.randn(1000, 2), columns=["Month", "Car_Reg_Count"])
+
+cars["Month"] = cars["Car_Reg_Count"] + np.arange(1000)
+
+cars.plot.hexbin(x="Month", y="Car_Reg_Count", gridsize=25)
+
+plt.show()
+
+#===============================================================
+
+cars.to_numpy()
+cars.describe()
+cars.T
+cars.sort_index(axis=1, ascending=False)
+cars.sort_values(by="Car_Reg_Count")
+print(cars(90))
